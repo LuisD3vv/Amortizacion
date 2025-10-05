@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Calculadora de no tengo idea" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="src/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <title>Calculadora de Amortizacion</title>
+  </head>
+  <body>
+
+    <section class="fondo">
+<section class="cuadros">
+
+  <section class="data-enter">
+    <div class="data-enter-title">
+      <h2>Calcula la Amortizacion</h2>
+      <a href="#">Limpar todo</a>
+    </div>
+    <div class="data-enter-amount">
+      <p>$</p><label for="Amount">
+        Monto de la Hipoteca </label>
+      <input type="number" id="Amount"> 
+    </div>
+  <section class="data-terms">
+    <div class="plazo" >
+    <label for="plazohip">Plazo de la hipoteca</label>
+    <input type="text" id="plazohip">
+    <p>Anos</p>
+    </div>
+    <div class="interes">
+    <label for="intehip">Interes</label>
+    <input type="text" id="intehip" >
+    <p>%</p>
+    </div>
+  </section>
+
+  <section class="data-enter-type">  
+    <p>Tipo de Hipoteca</p> 
+    <div class="repayment">
+      <input type="radio" name="option" id="replayment">
+      
+      <label for="replayment">Reembolso</label>
+    </div>
+    <div class="intonly">
+      <input type="radio" name="option" id="interes">
+      <label for="interes">Solo interes</label>
+    </div>
+  </section>
+
+    <div class="button">
+        <img src="src/images/icon-calculator.svg" alt="">
+      <button>Calcular Reembolsos</button>
+    </div>
+  </section>
+
+    <section class="placeholder-resultados">
+      <div class="placeholder-resultados-img">
+        <img src="src/images/illustration-empty.svg" alt="" />
+      </div>
+     <h2>Los resultados se muestran aqui</h2> 
+     <p>
+    Completa el formulario, da click en calcular y veras cual sera tu Reemolso mensual.
+    </p> 
+    </section>
+
+    <section class="resultados">
+      Your results Your results are shown below based on the information you
+      provided. To adjust the results, edit the form and click “calculate
+      repayments” again. Your monthly repayments Total you'll repay over the
+      term
+    </section>
+    </section>
+    </section>
+    <p class="congrats">made with by LuisDev</p>
+    <script defer src="src/main.js""></script>
+    
+  </body>
+</html>
