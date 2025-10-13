@@ -26,66 +26,73 @@
 
   <section class="data-enter">
     <div class="data-enter-title">
-      <h2>Calcula la Amortizacion</h2>
-      <a href="#">Limpar todo</a>
+      <h2>Calculadora de Amortizacion</h2>
+      <a href="#" onclick="limpiar()" id="clean">Limpiar todo</a>
     </div>
     <div class="data-enter-amount">
-      <p>$</p><label for="Amount">
+      <label for="Amount">
         Monto de la Hipoteca </label>
-      <input type="number" id="Amount"> 
+    <div class="recorte">
+        <p class="err">$</p>
+      <input type="number" id="Amount" min="0">
     </div>
+    </div>
+
+
   <section class="data-terms">
+
     <div class="plazo" >
     <label for="plazohip">Plazo de la hipoteca</label>
-    <input type="text" id="plazohip">
-    <p>Anos</p>
+        <div class="recorte">
+    <input type="text" id="plazohip" autocomplete="off">
+    <p class="err">years</p>
+        </div>
     </div>
+
     <div class="interes">
     <label for="intehip">Interes</label>
-    <input type="text" id="intehip" >
-    <p>%</p>
+        <div class="recorte">
+    <input type="text" id="intehip" autocomplete="off" >
+            <p class="err">%</p>
+        </div>
     </div>
+
   </section>
+
+
 
   <section class="data-enter-type">  
     <p>Tipo de Hipoteca</p> 
     <div class="repayment">
-      <input type="radio" name="option" id="replayment">
-      
+      <input type="radio" name="option" id="replayment" value="reembolso" >
       <label for="replayment">Reembolso</label>
     </div>
     <div class="intonly">
-      <input type="radio" name="option" id="interes">
+      <input type="radio" name="option" id="interes"value="interes">
       <label for="interes">Solo interes</label>
     </div>
   </section>
 
     <div class="button">
         <img src="src/images/icon-calculator.svg" alt="">
-      <button>Calcular Reembolsos</button>
+      <button id="boton">Calcular</button>
     </div>
   </section>
-
     <section class="placeholder-resultados">
       <div class="placeholder-resultados-img">
-        <img src="src/images/illustration-empty.svg" alt="" />
+        <img class="eraseimage" src="src/images/illustration-empty.svg" alt="" />
       </div>
-     <h2>Los resultados se muestran aqui</h2> 
-     <p>
+     <h2 class="erase">Los resultados se muestran aqui</h2>
+     <p class="erase">
     Completa el formulario, da click en calcular y veras cual sera tu Reemolso mensual.
-    </p> 
+    </p>
     </section>
 
-    <section class="resultados">
-      Your results Your results are shown below based on the information you
-      provided. To adjust the results, edit the form and click “calculate
-      repayments” again. Your monthly repayments Total you'll repay over the
-      term
     </section>
+
     </section>
-    </section>
-    <p class="congrats">made with by LuisDev</p>
-    <script defer src="src/main.js""></script>
+    <p class="congrats">made with by <a href="https://github.com/LuisD3vv">LuisDev</a></p>
+    <script defer src="src/main.js"></script>
     
   </body>
 </html>
