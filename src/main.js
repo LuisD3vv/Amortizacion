@@ -1,6 +1,6 @@
 // Codigo hecho por Luis Alejandro Aguilar Soberanes
 
-function mostrar() {
+function mostrar(monto,interes,plazo) {
     let contenedorResultado = document.querySelector(".placeholder-resultados");
     contenedorResultado.classList.remove("placeholder-resultado");
     contenedorResultado.classList.add("jose");
@@ -10,6 +10,12 @@ function mostrar() {
         textborrar.forEach(e => {
         e.style.display = 'none';
     });
+
+    // realizar los calculos
+    let numeroPagos = plazo * 12;
+    let montoTotal =(monto * (interes* Math.pow((1+interes),numeroPagos)) / Math.pow((1+interes),numeroPagos) - 1).toFixed(2);
+    let montoMensual = ( montoTotal / 12).toFixed(2);
+
 
     contenedorResultado.classList.add("jose");
 
@@ -32,12 +38,12 @@ function mostrar() {
     contres.classList.add("resulblock");
 
     let rest = document.createElement("h2");
-    rest.textContent = "$1971";
+    rest.textContent = "$" + montoMensual;
     rest.classList.add("monthly");
 
     let monthlyres = document.createElement("p");
     monthlyres.classList.add("total-monthly");
-    monthlyres.textContent = "luis"
+    monthlyres.textContent = "$" + montoTotal;
 
     let elemspan = document.createElement("span");
     let text2 = document.createElement("p");
@@ -51,7 +57,8 @@ function mostrar() {
     contres.appendChild(monthlyres)
 }
 let boton = document.querySelector("#boton");
-boton.addEventListener("click", calcular,{once: true});
+boton.addEventListener("click", calcular);
+
 
 function  calcular () {
     let elementomonto = document.querySelector('#Amount');
@@ -65,41 +72,46 @@ function  calcular () {
     let interes = elementointeres.value.trim();
 
 
-    [monto, plazo, interes].forEach(element => {
-        let p = document.querySelectorAll(".err");
-        if (!monto || !plazo || !interes) {
-            p.forEach(e => {
-                e.style.color = 'white'
-                e.style.backgroundColor = 'red'
-            })
-        }
-        if (!monto && !plazo && !interes) {
-            alert("Debes de llenar los campos.");
-        }
-    })
-    // crear elementos que muestran el mensaje del campo requierido
-    let con1 = document.querySelector('.data-enter-amount');
-    let con2 = document.querySelector('.plazo');
-    let con3 = document.querySelector('.interes');
-    let con4 = document.querySelector('.data-enter-type');
-
-    let contenedores = [con1, con2, con3,con4];
-    contenedores.forEach(element => {
-        let elementoP = document.createElement("p");
-        elementoP.textContent = "Campo requerido";
-        elementoP.style.color = 'red'
-        elementoP.style.marginTop = '3px';
-        element.appendChild(elementoP);
-        setInterval(() => {
-            elementoP.remove();
+        [monto, plazo, interes].forEach(element => {
             let p = document.querySelectorAll(".err");
-            p.forEach(e => {
-                e.style.color = 'black'
-                e.style.backgroundColor = 'lightblue'
-            })
-        }, 3000);
-    })
-    mostrar();
+            if (!monto || !plazo || !interes) {
+                p.forEach(e => {
+                    e.style.color = 'white'
+                    e.style.backgroundColor = 'red'
+                })
+            }
+        })
+         if (!monto && !plazo && !interes) {
+                let con1 = document.querySelector('.data-enter-amount');
+                let con2 = document.querySelector('.plazo');
+                let con3 = document.querySelector('.interes');
+                let con4 = document.querySelector('.data-enter-type');
+
+                let contenedores = [con1, con2, con3,con4];
+                contenedores.forEach(element => {
+                    let elementoP = document.createElement("p");
+                    let moverBoton = document.querySelector(".button");
+                    moverBoton.style.marginTop = '1rem';
+                    elementoP.textContent = "Campo requerido";
+                    elementoP.style.paddingTop = '.5rem'
+                    elementoP.style.color = 'red'
+                    elementoP.style.marginTop = '3px';
+                    element.appendChild(elementoP);
+                    setInterval(() => {
+                        elementoP.remove();
+                        let p = document.querySelectorAll(".err");
+                        p.forEach(e => {
+                            e.style.color = 'black'
+                            e.style.backgroundColor = 'lightblue'
+                        })
+                    }, 3000);
+                })
+        return;
+            }
+
+    // crear elementos que muestran el mensaje del campo requierido
+
+    mostrar(monto,interes,plazo);
 
 }
 function limpiar (e) {
