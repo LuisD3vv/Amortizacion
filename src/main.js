@@ -38,22 +38,26 @@ function mostrar(monto,interes,plazo) {
 
     let elemspan = document.createElement("span");
     let text2 = document.createElement("p");
+
+
+    let interesReal = interes / 12;
     let tipo = "reembolso";
+    let numeroPagos = plazo * 12;
+
     if (!tipo) {
         console.log(`Tipo no ha recibido ningun parametro ${tipo}`);
     }
     else  {
         switch (tipo) {
             case "reembolso":
-                let numeroPagos = plazo * 12;
-                let MontoReembolso = monto * ( (interes/12) * Math.pow(1 + interes/12, numeroPagos) ) / ( Math.pow(1 + interes/12, numeroPagos) - 1 );
-                rest.textContent = "$" + (MontoReembolso / 12).toFixed(2);
-                monthlyres.textContent = "$" + (MontoReembolso * numeroPagos).toFixed(2) ;
+                let MontoReembolso = monto * (interesReal * Math.pow(1 + interesReal, numeroPagos)) / (Math.pow(1 + interesReal, numeroPagos) - 1);
+                rest.textContent =  MontoReembolso.toFixed(2);
+                monthlyres.textContent = "$" +  (MontoReembolso * numeroPagos).toFixed(2) ;
                 break;
             case "interes":
-                let MontoInteres = monto * interes / 12;
+                let MontoInteres = monto * interesReal / 12;
                 rest.textContent = "$" + MontoInteres.toFixed(2);
-                monthlyres.textContent = "$" + (MontoInteres / 12).toFixed(2);
+                monthlyres.textContent = "$" + MontoInteres.toFixed(2);
                 break;
             default:
                 console.log("hubo un error al asignar el tipo")
