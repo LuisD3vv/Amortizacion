@@ -26,7 +26,7 @@
 
   <section class="data-enter">
     <div class="data-enter-title">
-      <h2>Calculadora de Amortizacion</h2>
+      <h2>Calculadora de Amortización</h2>
       <a href="#" onclick="limpiar()" id="clean">Limpiar todo</a>
     </div>
     <div class="data-enter-amount">
@@ -35,14 +35,25 @@
     <div class="recorte">
         <p class="err">$</p>
       <input type="number" id="Amount" min="0">
+<!--        <div class="tipeCurrency">-->
+<!--        <label for="currency">Moneda</label>-->
+<!--        <select id="currency">-->
+<!--            <option selected disabled>&#45;&#45;&#45;&#45;</option>-->
+<!--            <option value="dolar">Dolar $</option>-->
+<!--            <option value="mexican">Peso Mexicano $</option>-->
+<!--            <option value="euro">Euro</option>-->
+<!--        </select>-->
+<!--        </div>-->
     </div>
+
+
     </div>
 
 
   <section class="data-terms">
 
     <div class="plazo" >
-    <label for="plazohip">Plazo de la hipoteca</label>
+    <label for="plazohip">Plazo</label>
         <div class="recorte">
     <input type="text" id="plazohip" autocomplete="off">
     <p class="err">Años</p>
@@ -50,7 +61,7 @@
     </div>
 
     <div class="interes">
-    <label for="intehip">Interes</label>
+    <label for="intehip">Interés</label>
         <div class="recorte">
     <input type="text" id="intehip" autocomplete="off" >
             <p class="err">%</p>
@@ -62,14 +73,14 @@
 
 
   <section class="data-enter-type">  
-    <p>Tipo de Hipoteca</p> 
+    <p>Tipo de Hipoteca</p>
     <div class="repayment">
-      <input type="radio" name="option" id="replayment" value="reembolso" >
+      <input type="radio" name="option" id="replayment" value="reembolso">
       <label for="replayment">Reembolso</label>
     </div>
     <div class="intonly">
-      <input type="radio" name="option" id="interes"value="interes">
-      <label for="interes">Solo interes</label>
+      <input type="radio" name="option" id="interes" value="interes">
+      <label for="interes">Solo Interés</label>
     </div>
   </section>
 

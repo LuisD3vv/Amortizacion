@@ -10,43 +10,56 @@ function mostrar(monto,interes,plazo) {
         textborrar.forEach(e => {
         e.style.display = 'none';
     });
-
     // realizar los calculos
-    let numeroPagos = plazo * 12;
-    let montoTotal =(monto * (interes* Math.pow((1+interes),numeroPagos)) / Math.pow((1+interes),numeroPagos) - 1).toFixed(2);
-    let montoMensual = ( montoTotal / 12).toFixed(2);
-
-
     contenedorResultado.classList.add("jose");
-
     let bienh3 = document.createElement("h3");
     bienh3.textContent = "Tus resultados"
     bienh3.classList.add("resultitle");
 
     let bienp = document.createElement("p");
-    bienp.textContent = "Tus resultados estan basados en la informacion que proporcionaste, para reajustar los resultados, edita el formulario y da click en calcular.";
+    bienp.textContent = "Tus resultados estan basados en la información que proporcionaste, para reajustar los resultados, da click en limpiar y edita el formulario y da click en calcular.";
     bienp.classList.add("infotext");
 
     let ptext2 = document.createElement("p");
-    ptext2.textContent = "tu reembolso mensual"
+    ptext2.textContent = "Tu reembolso mensual"
     ptext2.classList.add("resulblock-info-text1");
 
     let ptext3 = document.createElement("p");
-    ptext3.textContent = "Reembolso total al terminar la operacion"
+    ptext3.textContent = "total que reembolsará durante el plazo"
 
     let contres = document.createElement("div");
     contres.classList.add("resulblock");
 
     let rest = document.createElement("h2");
-    rest.textContent = "$" + montoMensual;
     rest.classList.add("monthly");
 
     let monthlyres = document.createElement("p");
     monthlyres.classList.add("total-monthly");
-    monthlyres.textContent = "$" + montoTotal;
 
     let elemspan = document.createElement("span");
     let text2 = document.createElement("p");
+    let tipo = "reembolso";
+    if (!tipo) {
+        console.log(`Tipo no ha recibido ningun parametro ${tipo}`);
+    }
+    else  {
+        switch (tipo) {
+            case "reembolso":
+                let numeroPagos = plazo * 12;
+                let MontoReembolso = monto * ( (interes/12) * Math.pow(1 + interes/12, numeroPagos) ) / ( Math.pow(1 + interes/12, numeroPagos) - 1 );
+                rest.textContent = "$" + (MontoReembolso / 12).toFixed(2);
+                monthlyres.textContent = "$" + (MontoReembolso * numeroPagos).toFixed(2) ;
+                break;
+            case "interes":
+                let MontoInteres = monto * interes / 12;
+                rest.textContent = "$" + MontoInteres.toFixed(2);
+                monthlyres.textContent = "$" + (MontoInteres / 12).toFixed(2);
+                break;
+            default:
+                console.log("hubo un error al asignar el tipo")
+                break;
+            }
+    }
 
     contenedorResultado.appendChild(bienh3);
     contenedorResultado.appendChild(bienp);
@@ -59,62 +72,57 @@ function mostrar(monto,interes,plazo) {
 let boton = document.querySelector("#boton");
 boton.addEventListener("click", calcular);
 
-
-function  calcular () {
+function calcular () {
     let elementomonto = document.querySelector('#Amount');
     let elementoplazo = document.querySelector('#plazohip');
     let elementointeres = document.querySelector('#intehip');
 
-    // trim para espacios como el strip en python
-    // value devuelve solo texto
+    // value devuelve solo texto y trim para espacios como el strip en python
     let monto = elementomonto.value.trim();
     let plazo = elementoplazo.value.trim();
     let interes = elementointeres.value.trim();
+     if (!monto && !plazo && !interes) {
+         [monto, plazo, interes].forEach(element => {
+             let p = document.querySelectorAll(".err");
+             if (!monto || !plazo || !interes) {
+                 p.forEach(e => {
+                     e.style.color = 'white'
+                     e.style.backgroundColor = 'red'
+                 })
+             }
+         });
+        let con1 = document.querySelector('.data-enter-amount');
+        let con2 = document.querySelector('.plazo');
+        let con3 = document.querySelector('.interes');
+        let con4 = document.querySelector('.data-enter-type');
 
-
-        [monto, plazo, interes].forEach(element => {
-            let p = document.querySelectorAll(".err");
-            if (!monto || !plazo || !interes) {
+        let contenedores = [con1, con2, con3,con4];
+        contenedores.forEach(element => {
+            let elementoP = document.createElement("p");
+            let moverBoton = document.querySelector(".button");
+            moverBoton.style.marginTop = '1rem';
+            elementoP.textContent = "Campo requerido";
+            elementoP.style.paddingTop = '.5rem'
+            elementoP.style.color = 'red'
+            elementoP.style.marginTop = '3px';
+            elementoP.style.fontSize = '1rem';
+            element.appendChild(elementoP);
+            setInterval(() => {
+                let p = document.querySelectorAll(".err");
                 p.forEach(e => {
-                    e.style.color = 'white'
-                    e.style.backgroundColor = 'red'
+                    e.style.color = 'black';
+                    e.style.backgroundColor = 'lightblue';
                 })
-            }
-        })
-         if (!monto && !plazo && !interes) {
-                let con1 = document.querySelector('.data-enter-amount');
-                let con2 = document.querySelector('.plazo');
-                let con3 = document.querySelector('.interes');
-                let con4 = document.querySelector('.data-enter-type');
-
-                let contenedores = [con1, con2, con3,con4];
-                contenedores.forEach(element => {
-                    let elementoP = document.createElement("p");
-                    let moverBoton = document.querySelector(".button");
-                    moverBoton.style.marginTop = '1rem';
-                    elementoP.textContent = "Campo requerido";
-                    elementoP.style.paddingTop = '.5rem'
-                    elementoP.style.color = 'red'
-                    elementoP.style.marginTop = '3px';
-                    element.appendChild(elementoP);
-                    setInterval(() => {
-                        elementoP.remove();
-                        let p = document.querySelectorAll(".err");
-                        p.forEach(e => {
-                            e.style.color = 'black'
-                            e.style.backgroundColor = 'lightblue'
-                        })
-                    }, 3000);
-                })
-        return;
-            }
-
-    // crear elementos que muestran el mensaje del campo requierido
-
-    mostrar(monto,interes,plazo);
-
+                elementoP.remove();
+            }, 3000);
+        });
+        }
+     else {
+         mostrar(monto,interes,plazo);
+     }
 }
 function limpiar (e) {
     location.reload()
 
 }
+
