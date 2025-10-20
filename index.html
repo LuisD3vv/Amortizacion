@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Calculadora de no tengo idea" />
+    <meta name="description" content="Calculadora Amortizacion de hipoteca" />
+      <meta name="author" content="Luis Aguilar"/>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -55,7 +56,7 @@
     <div class="plazo" >
     <label for="plazohip">Plazo</label>
         <div class="recorte">
-    <input type="number" id="plazohip" autocomplete="off">
+     <input type="number" id="plazohip" autocomplete="off" min="0">
     <p class="err">Años</p>
         </div>
     </div>
@@ -63,7 +64,7 @@
     <div class="interes">
     <label for="intehip">Interés</label>
         <div class="recorte">
-    <input type="number" id="intehip" autocomplete="off" >
+    <input type="number" id="intehip" autocomplete="off" min="0" >
             <p class="err">%</p>
         </div>
     </div>
@@ -75,12 +76,12 @@
   <section class="data-enter-type">  
     <p>Tipo de Hipoteca</p>
     <div class="repayment">
-      <input type="radio" name="option" id="replayment" value="reembolso">
+      <input type="radio"   id="replayment" value="reembolso">
       <label for="replayment">Reembolso</label>
     </div>
     <div class="intonly">
-      <input type="radio" name="option" id="interes" value="interes">
-      <label for="interes">Solo Interés (no disponible)</label>
+      <input type="radio"  id="interes" value="interes">
+      <label for="interes">Solo Interés</label>
     </div>
   </section>
 
@@ -103,11 +104,7 @@
 
     </section>
     <footer class="congrats">
-        <a href="https://github.com/LuisD3vv">Github</a>
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Linkedin</a>
-
+        <a href="https://github.com/LuisD3vv">LissandroD3v</a>
     </footer>
     <script defer src="src/main.js"></script>
     

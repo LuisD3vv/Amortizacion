@@ -1,5 +1,10 @@
 // Codigo hecho por Luis Alejandro Aguilar Soberanes
 
+function agregarComas(numero) {
+    // agregar comas a los numeros, cada 3 caracteres.
+    return numero.toLocaleString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function mostrar(monto,interes,plazo) {
     let contenedorResultado = document.querySelector(".placeholder-resultados");
     contenedorResultado.classList.remove("placeholder-resultado");
@@ -41,8 +46,10 @@ function mostrar(monto,interes,plazo) {
 
 
     let interesReal = interes / 12;
-    let tipo = "reembolso";
     let numeroPagos = plazo * 12;
+
+    let tipo = 'reembolso';
+
 
     if (!tipo) {
         console.log(`Tipo no ha recibido ningun parametro ${tipo}`);
@@ -51,13 +58,23 @@ function mostrar(monto,interes,plazo) {
         switch (tipo) {
             case "reembolso":
                 let MontoReembolso = monto * (interesReal * Math.pow(1 + interesReal, numeroPagos)) / (Math.pow(1 + interesReal, numeroPagos) - 1);
-                rest.textContent =  MontoReembolso.toFixed(2);
-                monthlyres.textContent = "$" +  (MontoReembolso * numeroPagos).toFixed(2) ;
+                if (!MontoReembolso) {
+                    return;
+                }
+                let montorem = agregarComas(MontoReembolso);
+                rest.textContent = "$" +  montorem
+                let monthlyrescomas= (MontoReembolso * numeroPagos)
+                if (!monthlyrescomas) {
+                    return;
+                }
+                let comasmierda = agregarComas(monthlyrescomas)
+                monthlyres.textContent = "$" + comasmierda
                 break;
             case "interes":
                 let MontoInteres = monto * interesReal / 12;
-                rest.textContent = "$" + MontoInteres.toFixed(2);
-                monthlyres.textContent = "$" + MontoInteres.toFixed(2);
+                let montointeresmensual = (MontoInteres / 12).toFixed(2);
+                rest.textContent = "$" + agregarComas(montointeresmensual);
+                monthlyres.textContent = "$" + agregarComas(MontoInteres);
                 break;
             default:
                 console.log("hubo un error al asignar el tipo")
@@ -73,8 +90,23 @@ function mostrar(monto,interes,plazo) {
     contres.appendChild(ptext3)
     contres.appendChild(monthlyres)
 }
+let botonLlamado = 1;
+
 let boton = document.querySelector("#boton");
-boton.addEventListener("click", calcular);
+boton.addEventListener("click", () => {
+    setTimeout(()=> {
+        botonLlamado = 1;
+    }, 2000);
+    if (botonLlamado === 1) {
+        console.log("Se llamo a calcular");
+        calcular();
+        console.log(botonLlamado);
+        botonLlamado = 0;
+    }
+
+
+});
+
 
 function calcular () {
     let elementomonto = document.querySelector('#Amount');
@@ -86,6 +118,7 @@ function calcular () {
     let plazo = elementoplazo.value.trim();
     let interes = elementointeres.value.trim();
      if (!monto && !plazo && !interes) {
+         alert("Porvafor, llena los datos solicitados");
          [monto, plazo, interes].forEach(element => {
              let p = document.querySelectorAll(".err");
              if (!monto || !plazo || !interes) {
@@ -111,13 +144,14 @@ function calcular () {
             elementoP.style.marginTop = '3px';
             elementoP.style.fontSize = '1rem';
             element.appendChild(elementoP);
-            setInterval(() => {
+            let intervalo;
+            intervalo = setInterval(() => {
+                elementoP.remove();
                 let p = document.querySelectorAll(".err");
                 p.forEach(e => {
                     e.style.color = 'black';
                     e.style.backgroundColor = 'lightblue';
                 })
-                elementoP.remove();
             }, 3000);
         });
         }
