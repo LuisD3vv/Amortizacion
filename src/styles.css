@@ -359,9 +359,7 @@ border-radius: 1rem;
       display: none !important;
     }
 
-
 .data-enter-type{
-    flex-direction: row;
     width: 100%;
     align-items: center;
 }
@@ -371,21 +369,19 @@ border-radius: 1rem;
 
 .data-enter-type input {
 padding: 1rem;
+
 }
-.data-enter-type p {
-    display: none
-;
+.data-enter-type div {
+    width: 100%;
 }
+
 .repayment,
-    .intonly {
-    flex: 1 1;
-    flex-direction: row;
-    justify-content: center;
+.intonly {
+    gap: 1rem;
+    justify-content:center;
      box-shadow: 0 2px 1px 1px #222;
-    align-self: center;
     padding: 2rem;
     }
-
 }
 
 .congrats {
