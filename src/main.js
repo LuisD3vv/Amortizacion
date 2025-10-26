@@ -32,7 +32,7 @@ function mostrar(monto, interes, plazo,opcion) {
 
   let bienp = document.createElement("p");
   bienp.textContent =
-    "Resultados basados en la información que proporcionaste, para reajustar los resultados, da click en limpiar y edita el formulario y da click en calcular.";
+    "Resultados basados en la información que proporcionaste, para reajustar los resultados, da click en limpiar, edita el formulario y da click en calcular.";
   bienp.classList.add("infotext");
 
   let ptext2 = document.createElement("p");
