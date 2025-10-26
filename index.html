@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Calculadora Amortizacion de hipoteca" />
-      <meta name="author" content="Luis Aguilar"/>
+    <meta name="author" content="Luis Aguilar"/>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,6 +18,8 @@
       href="src/images/favicon-32x32.png"
     />
     <link rel="stylesheet" href="src/styles.css" />
+    <link rel="prefetch" href="src/main.js" as="document" />
+
     <title>Calculadora de Amortizacion</title>
   </head>
   <body>
@@ -35,7 +37,7 @@
         Monto de la Hipoteca </label>
     <div class="recorte">
         <p class="err">$</p>
-      <input type="number" id="Amount" min="0">
+      <input type="number" id="Amount" min="0" placeholder="e.g > 0">
 <!--        <div class="tipeCurrency">-->
 <!--        <label for="currency">Moneda</label>-->
 <!--        <select id="currency">-->
@@ -56,7 +58,7 @@
     <div class="plazo" >
     <label for="plazohip">Plazo</label>
         <div class="recorte">
-     <input type="number" id="plazohip" autocomplete="off" min="0">
+    <input type="number" id="plazohip" autocomplete="off" min="0" placeholder="e.g 10">
     <p class="err">Años</p>
         </div>
     </div>
@@ -64,23 +66,20 @@
     <div class="interes">
     <label for="intehip">Interés</label>
         <div class="recorte">
-    <input type="number" id="intehip" autocomplete="off" min="0" >
+    <input type="number" id="intehip" autocomplete="off" min="0"  placeholder="e.g 0.25">
             <p class="err">%</p>
         </div>
     </div>
 
   </section>
-
-
-
   <section class="data-enter-type">  
     <p>Tipo de Hipoteca</p>
     <div class="repayment">
-      <input type="radio"   id="replayment" value="reembolso">
+      <input type="radio" name="option" id="replayment" value="reembolso">
       <label for="replayment">Reembolso</label>
     </div>
     <div class="intonly">
-      <input type="radio"  id="interes" value="interes">
+      <input type="radio" name="option" id="interes" value="interes">
       <label for="interes">Solo Interés</label>
     </div>
   </section>
@@ -94,9 +93,9 @@
       <div class="placeholder-resultados-img">
         <img class="eraseimage" src="src/images/illustration-empty.svg" alt="" />
       </div>
-     <h2 class="erase">Los resultados se muestran aqui</h2>
+     <h2 class="erase">Los resultados se muestran aqui.</h2>
      <p class="erase">
-    Completa el formulario, da click en calcular y veras cual sera tu Reemolso mensual.
+    Completa el formulario de la izquierda, da click en calcular y listo!
     </p>
     </section>
 
@@ -104,9 +103,11 @@
 
     </section>
     <footer class="congrats">
-        <a href="https://github.com/LuisD3vv">LissandroD3v</a>
+        <a href="https://github.com/LuisD3vv">Made by Lissandro :)</a>
     </footer>
-    <script defer src="src/main.js"></script>
+    <script defer src="src/main.js">
+    
+    </script>
     
   </body>
 </html>
