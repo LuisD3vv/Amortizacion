@@ -290,7 +290,7 @@ label {
     height: max-content;
   }
   .placeholder-resultados {
-
+width: 100%;
     order: -1;
     padding: 2rem;
     height: max-content;
@@ -350,18 +350,7 @@ label {
     font-size: 1.3rem;
   }
   .data-enter-title {
-    width: max-content;
-    margin: auto;
-    background-color: rgba(34, 34, 34, 0.966);
-    padding: 1.5rem;
-    border-radius: .5rem;
-    overflow: hidden;
-  }
-  .data-enter-title h2 {
-    
-  margin: auto;
-    color: #eeee;
-    font-size: 1.8rem;
+    display: none;
   }
   #clean {
     display: none;
